@@ -42,9 +42,9 @@ public class GameOfLifeTest {
     @Test
     void givenThreeAliveCellsWhenCheckWillAliveThenShouldOneOfThemAlive() {
         List<Cell> aliveCells = new ArrayList<>();
-        Cell cellOne = new Cell(2,2);
-        Cell cellTwo = new Cell(2,1);
-        Cell cellThree = new Cell(2,3);
+        Cell cellOne = new Cell(2, 2);
+        Cell cellTwo = new Cell(3, 4);
+        Cell cellThree = new Cell(2, 3);
 
         aliveCells.add(cellOne);
         aliveCells.add(cellTwo);
@@ -54,6 +54,11 @@ public class GameOfLifeTest {
 
         List<Cell> newList = new ArrayList<>();
         newList.add(cellOne);
-        assertEquals(newList,game.getAliveCells());
+        newList.add(cellTwo);
+        newList.add(cellThree);
+        assertEquals(newList, game.getAliveCells());
     }
+
+
+
 }

@@ -33,8 +33,8 @@ public class Cell {
 
     boolean isNeighbour(Cell cell) {
         List<Cell> cells = allNeighbours();
-        return cells.contains(cell);
-    }
+        return  cells.contains(cell);
+        }
 
 
     private List<Cell> allNeighbours() {
@@ -84,3 +84,12 @@ public class Cell {
     }
 
 }
+/*
+* boolean isNeighbour(Cell cell) {
+        List<Cell> cells = allNeighbours();
+        if(cells.contains(cell)){
+            return  true;
+        }
+        return false;
+    }
+* */
