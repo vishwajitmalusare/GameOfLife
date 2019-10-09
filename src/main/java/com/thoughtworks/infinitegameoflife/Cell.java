@@ -31,15 +31,13 @@ public class Cell {
         this.y = y;
     }
 
-    public boolean isNeighbour(Cell cell) {
-
+    boolean isNeighbour(Cell cell) {
         List<Cell> cells = allNeighbours();
         return cells.contains(cell);
-
     }
 
 
-    List<Cell> allNeighbours() {
+    private List<Cell> allNeighbours() {
         List<Cell> neighbours = new ArrayList<>();
         //LeftNeighbour
         int newLeftNeighbourX = x - 1;

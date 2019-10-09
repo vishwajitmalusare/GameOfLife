@@ -12,23 +12,18 @@ public class GameOfLife {
     }
 
     public List<Cell> getAliveCells() {
-        if(aliveCells.size()>2) {
-            List<Cell> isAlive = new ArrayList<>();
+        if (aliveCells.size() > 2) {
 
+            List<Cell> isAlive = new ArrayList<>();
             Cell cellOne = aliveCells.get(0);
             Cell cellTwo = aliveCells.get(1);
-            //Cell cellThree = aliveCells.get(2);
+            Cell cellThree = aliveCells.get(2);
 
-            List<Cell> allNeighbours = cellOne.allNeighbours();
-            System.out.println(allNeighbours);
-
-//        if (cellTwo.isNeighbour(cellOne) && cellTwo.isNeighbour(cellThree)) {
-//            isAlive.add(cellTwo);
-            if (allNeighbours.contains(cellTwo)) {
+            if(cellOne.isNeighbour(cellTwo) && cellOne.isNeighbour(cellThree)) {
                 isAlive.add(cellOne);
                 return isAlive;
             }
         }
-            return new ArrayList<>();
+        return new ArrayList<>();
     }
 }
