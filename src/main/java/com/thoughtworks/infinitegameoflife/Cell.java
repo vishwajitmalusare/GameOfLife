@@ -3,13 +3,11 @@ package com.thoughtworks.infinitegameoflife;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class Cell {
     private int y;
     private int x;
-
-//    public Cell(Cell cell) {
-//    }
 
 
     @Override
@@ -31,19 +29,36 @@ public class Cell {
         this.y = y;
     }
 
-    boolean isNeighbour(Cell cell) {
+    int getLiveNeighbour(List<Cell> liveNeighbours) {
         List<Cell> cells = allNeighbours();
-        return  cells.contains(cell);
+        List<Cell> cellNeighbours = new ArrayList<>();
+        for (Cell cell : liveNeighbours) {
+            if (cells.contains(cell)) {
+                cellNeighbours.add(cell);
+            }
         }
+        return cellNeighbours.size();
+    }
 
+    public List<Cell> getDeadNeighbours(Cell cell) {
+        List<Cell> allNeighbours = allNeighbours();
+        List<Cell> deadNeighbours = new ArrayList<>();
 
-    private List<Cell> allNeighbours() {
+            for (int i = 0; i < allNeighbours().size(); i++) {
+                if (!allNeighbours.contains(cell)) {
+                deadNeighbours.add(cell);
+                return deadNeighbours;
+            }
+        }
+        return allNeighbours;
+    }
+
+    public List<Cell> allNeighbours() {
         List<Cell> neighbours = new ArrayList<>();
-        //LeftNeighbour
+
         int newLeftNeighbourX = x - 1;
         Cell leftNeighbour = new Cell(newLeftNeighbourX, y);
 
-        //rightNeighbour
         int newRightNeighbourX = x + 1;
         Cell rightNeighbour = new Cell(newRightNeighbourX, y);
 
@@ -84,12 +99,3 @@ public class Cell {
     }
 
 }
-/*
-* boolean isNeighbour(Cell cell) {
-        List<Cell> cells = allNeighbours();
-        if(cells.contains(cell)){
-            return  true;
-        }
-        return false;
-    }
-* */

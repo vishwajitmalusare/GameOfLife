@@ -12,35 +12,26 @@ public class GameOfLife {
     }
 
     public List<Cell> getAliveCells() {
-        ArrayList<Cell> isAlive = new ArrayList<>();
-        if (aliveCells.size() > 2) {
 
-           for (int i=0;i<aliveCells.size();i++){
-               for (int j=0;j<aliveCells.size();j++) {
+        List<Cell> newAliveCells = new ArrayList<>();
 
-                   if (!aliveCells.get(i).equals(aliveCells.get(j)) && aliveCells.get(i).isNeighbour(aliveCells.get(j))) {
-                       if(!isAlive.contains(aliveCells.get(i))) {
-                           isAlive.add(aliveCells.get(i));
-                       }
-                   }
-               }
-           }
+        for (int i = 0; i < aliveCells.size(); i++) {
+            if ((getLiveNeighbour(i) == 2) || (getLiveNeighbour(i)) == 3) {
+                newAliveCells.add(aliveCells.get(i));
+            }
 
-        }
-        return isAlive;
-    }
-}
-/*
-* if (aliveCells.size() > 2) {
-            ArrayList<Cell> isAlive = new ArrayList<>();
+            List<Cell> deadNeighbours = aliveCells.get(i).getDeadNeighbours(aliveCells.get(i));
 
-            Cell cellOne = aliveCells.get(0);
-            Cell cellTwo = aliveCells.get(1);
-            Cell cellThree = aliveCells.get(2);
-
-            if (cellOne.isNeighbour(cellTwo) && cellOne.isNeighbour(cellThree)) {
-                isAlive.add(cellOne);
-                return isAlive;
+            if ((deadNeighbours.get(i).getLiveNeighbour(aliveCells)) == 3) {
+                newAliveCells.add(deadNeighbours.get(i));
             }
         }
-* */
+
+        return newAliveCells;
+    }
+
+    private int getLiveNeighbour(int i) {
+        return aliveCells.get(i).getLiveNeighbour(aliveCells);
+    }
+
+}
