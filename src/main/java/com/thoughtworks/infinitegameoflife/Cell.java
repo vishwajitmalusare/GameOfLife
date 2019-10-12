@@ -40,17 +40,16 @@ public class Cell {
         return cellNeighbours.size();
     }
 
-    public List<Cell> getDeadNeighbours(Cell cell) {
-        List<Cell> allNeighbours = allNeighbours();
-        List<Cell> deadNeighbours = new ArrayList<>();
+    public List<Cell> getDeadNeighbours(List<Cell> deadNeighbours) {
+        List<Cell> anotherCells = allNeighbours();
+        List<Cell> cellNeighbours = new ArrayList<>();
 
-            for (int i = 0; i < allNeighbours().size(); i++) {
-                if (!allNeighbours.contains(cell)) {
-                deadNeighbours.add(cell);
-                return deadNeighbours;
+            for (Cell cell : deadNeighbours) {
+                if (!anotherCells.contains(cell)) {
+                cellNeighbours.add(cell);
             }
         }
-        return allNeighbours;
+        return anotherCells;
     }
 
     public List<Cell> allNeighbours() {

@@ -20,13 +20,12 @@ public class GameOfLife {
                 newAliveCells.add(aliveCells.get(i));
             }
 
-            List<Cell> deadNeighbours = aliveCells.get(i).getDeadNeighbours(aliveCells.get(i));
+            List<Cell> deadNeighbours = aliveCells.get(i).getDeadNeighbours(aliveCells);
 
             if ((deadNeighbours.get(i).getLiveNeighbour(aliveCells)) == 3) {
                 newAliveCells.add(deadNeighbours.get(i));
             }
         }
-
         return newAliveCells;
     }
 
